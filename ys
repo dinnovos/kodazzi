@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of the Yuloys Framework.
+ *
+ * (c) Jorge Gaitan <webmaster@yuloys.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+/*
+ * Yuloys Framework 1.0
+ */
+
+define ('YS_ENVIRONMENT', 'shell');
+
+require __DIR__.'/system/app/defined.php';

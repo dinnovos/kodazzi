@@ -1,0 +1,108 @@
+## YAML Template.
+
+# Doctrine: integer
+primary:
+  parameters:
+    strategy: {required: true, type-value: 'string', allow-value: ['auto', 'sequence', 'identity', 'falsene']}
+
+# Doctrine: string
+string:
+  parameters:
+    length: {required: true, type-value: 'integer'}
+    notnull: {required: false, type-value: 'boolean'}
+    unique: {required: false, type-value: 'boolean'}
+
+# Doctrine: string
+title:
+  extend: string
+  parameters:
+    unique: {allow: false}
+
+# Doctrine: integer
+integer:
+  extend: string
+
+# Doctrine: string
+name:
+  extend: string
+
+# Doctrine: string
+email:
+  extend: string
+  parameters:
+    unique: {required: true, type-value: 'boolean'}
+
+# Doctrine: string
+login:
+  extend: string
+  parameters:
+    unique: {required: true, type-value: 'boolean'}
+
+# Doctrine: string
+password:
+  extend: string
+
+# Doctrine: string
+url:
+  extend: string
+
+# Doctrine: text
+editor:
+  parameters:
+    notnull: {required: false, type-value: 'boolean'}
+
+# Doctrine: text
+note:
+  extend: editor
+  parameters:
+    length: {required: true, type-value: 'integer'}
+
+# Doctrine: decimal
+decimal:
+  extend: string
+  parameters:
+    unique: {allow: false}
+    length: {allow: false}
+    scale: {required: true, type-value: 'integer'}
+    precision: {required: true, type-value: 'integer'}
+
+# Doctrine: date
+date:
+  extend: string
+  parameters:
+    unique: {allow: false}
+    length: {allow: false}
+
+# Doctrine: datetime
+datetime:
+  extend: date
+
+# Doctrine: time
+time:
+  extend: date
+
+# Doctrine: string
+options:
+  extend: string
+  parameters:
+    unique: {allow: false}
+    length: {allow: false}
+    values: {required: true, type-value: 'array'}
+    default: {required: true, type-value: 'any'}
+
+# Doctrine: string
+file:
+  extend: string
+  parameters:
+    unique: {allow: false}
+    size: {required: true, type-value: 'integer'}
+    ext: {required: true, type-value: 'array'}
+
+# Doctrine: string
+image:
+  extend: file
+  parameters:
+    min_dimensions: {required: false, type-value: 'array'}
+    max_dimensions: {required: false, type-value: 'array'}
+    ext: {required: true, type-value: 'array'}
+    copys: {required: false, type-value: 'array'}

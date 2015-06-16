@@ -1,0 +1,20 @@
+{
+    "name": "kodazzi/kodazzi",
+    "type": "project",
+    "description": "The Kodazzi PHP framework",
+    "keywords": ["framework","kodazzi","venezuela"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jorge Gaitan (Dinnovos)",
+            "email": "jgaitan@kodazzi.com",
+            "homepage": "http://kodazzi.com"
+        }
+    ],
+    "require": {
+        "kodazzi/framework": "1.*"
+    },
+	"config": {
+		"preferred-install": "dist"
+	}
+}
