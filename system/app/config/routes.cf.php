@@ -12,5 +12,5 @@ use Symfony\Component\Routing\Route;
 
 $routes->add(
 	'homepage',
-	new Route('/', array( '_controller' => 'Dinnovos\Site:Home:index' ))
+	new Route('/', array( 'controller' => 'Dinnovos\Site:Welcome:index' ))
 );
