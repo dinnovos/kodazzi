@@ -1,0 +1,17 @@
+{% autoescape false %}
+<div class="col-lg-12">
+	<div class="form-group{{ (widget.isRequired()) ? ' required' : '' }}{{ widget.isValid() ? '' : ' error has-error' }}">
+        {{ widget.renderLabel() }}
+
+        {{ widget.renderField() }}
+
+        {% if widget.isValid() == false %}
+            <p class="text-danger">{{ widget.getError() }}</p>
+        {% else %}
+            {% if widget.getHelp() != '' %}
+                <p class="text-info">{{ widget.getHelp() }}</p>
+            {% endif %}
+        {% endif %}
+	</div>
+</div>
+{% endautoescape %}

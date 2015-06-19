@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% block head %}
+
+            <title>{% block title %}Kodazzi{% endblock %} </title>
+
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta charset="utf-8">
+            <meta name="description" content="{% block meta_description %} Proyecto con Yulois 1.0 {% endblock %}">
+            <meta name="author" content="Autor">
+
+            <!-- Responsive Metatag -->
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+            {% include "global/metas_socials.twig" %}
+
+            <link rel="icon" type="image/png" href="/src/default/favicon.png" />
+
+            {% block stylesheet %}
+                <link rel="stylesheet" type="text/css" media="screen" href="/src/bootstrap/css/bootstrap.min.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="/src/font-awesome/css/font-awesome.min.css" />
+                <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen">
+            {% endblock %}
+
+            <script type="text/javascript" src="/src/jquery/jquery.min.1.9.1.js"></script>
+            <script type="text/javascript" src="/src/bootstrap/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="/js/script.js"></script>
+
+        {% endblock %}
+    </head>
+    <body>
+
+        <!-- Full Body Container -->
+        <div id="container">
+
+            {% block content %}{% endblock %}
+
+        </div>
+    </body>
+
+</html>

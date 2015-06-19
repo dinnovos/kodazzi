@@ -1,12 +1,9 @@
 <?php
 
 namespace Dinnovos\Site\Controllers;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\Request;
 use Dinnovos\Site\Main\BundleController;
-use Kodazzi\Container\Service;
-use Kodazzi\EventDispatcher\Event;
 
 class HomeController extends BundleController
 {

@@ -1,0 +1,27 @@
+{% extends "email.web.twig" %}
+
+{% block content %}
+
+    <table border="0" bgcolor="#F8F8F8" width="95%" cellpadding="10" style="margin: 5px 0;font-family: Arial;font-size: 14px;color:#000000;">
+        <tr>
+            <td align="left">
+                <h1>Usted se ha puesto en contacto con nosotros.</h1>
+
+                <div>
+                    <p> Le agradecemos el tiempo que le ha tomado enviarnos este mensaje. Nuestro equipo con gusto atender&aacute; su solicitud en el menor tiempo posible. </p>
+                </div>
+
+                <table border="0" bgcolor="#F8F8F8" width="95%" cellpadding="10" style="margin: 5px 0;font-family: Arial;font-size: 14px;color:#000000;">
+                    <tr><th>Nombre completo:</th><td>{{ data.full_name|raw }}</td></tr>
+                    <tr><th>Correo electr&oacute;nico.:</th><td>{{ data.email }}</td></tr>
+                    <tr><th>Asunto:</th><td>{{ data.subject|raw }}</td></tr>
+                    <tr><th>Mensaje:</th><td>{{ data.message|raw }}</td></tr>
+                </table>
+
+                <div>
+                    <p> Que tenga un buen d&iacute;a. </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

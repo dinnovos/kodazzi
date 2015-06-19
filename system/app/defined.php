@@ -27,4 +27,4 @@ if(!defined('YS_ENVIRONMENT'))
 
 define ('YS_DEBUG', true);
 
-require YS_VND . 'Kodazzi/framework/src/bootstrap.php';
+require YS_VND . 'kodazzi/framework/src/bootstrap.php';

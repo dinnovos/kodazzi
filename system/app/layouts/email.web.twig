@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title> {{ subject }} </title>
+
+        <meta charset="utf-8">
+
+    </head>
+
+    <body>
+
+    <div class="main">
+
+        {% block head %}
+        <table border="0" bgcolor="#F8F8F8" width="95%" cellpadding="10" style="font-family: Arial;">
+            <tr>
+                <td width="20%" align="left">
+                    <a href="{{ base_url }}"><img src="{{ base_url }}/src/default/logo-dinnovos-email.png" /></a>
+                </td>
+                <td align="center">
+                    <span style="color:#5FB22D;font-size: 18px;">Innovamos en la Web.</span>
+                </td>
+                <td width="20%" align="left">
+                </td>
+            </tr>
+        </table>
+        {% endblock %}
+
+        {% block content %} {% endblock %}
+
+    </div>
+
+    {% block footer %}
+    <table border="0" bgcolor="#F8F8F8" width="95%" cellpadding="10" style="font-family: Arial;font-size: 14px;color:#000000;">
+        <tr>
+
+            <td align="center">
+                <a href="#" target="_blank" class="icon fb"><img src="{{ base_url }}/src/default/facebook.png" /></a>
+                <a href="#" target="_blank" class="icon tw"><img src="{{ base_url }}/src/default/twitter.png" /></a>
+                <a href="#" target="_blank" class="icon go"><img src="{{ base_url }}/src/default/google+.png" /></a>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                &copy; Copyright 2014 by <a href="http://kodazzi.com/">Kodazzi</a>.
+            </td>
+        </tr>
+    </table>
+    {% endblock %}
+
+    </body>
+
+</html>
