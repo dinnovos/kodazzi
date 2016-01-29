@@ -1,9 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jorge
- * Date: 10/01/15
- * Time: 06:47 PM
+ * This file is part of the Kodazzi Framework.
+ *
+ * (c) Jorge Gaitan <info@kodazzi.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /*

@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * This file is part of the Kodazzi Framework.
  *
  * (c) Jorge Gaitan <info@kodazzi.com>
@@ -8,14 +8,8 @@
  * file that was distributed with this source code.
  */
 
-use Kodazzi\Kernel;
+use Kodazzi\Container\Service;
 
-Class AppKernel extends Kernel
-{
-    public function start()
-    {
-        Service::registerBundles(array(
-            new Kodazzi\Site\HookBundle()
-        ));
-    }
-}
+Service::Routing()
+    ->add('homepage')
+    ->path('/')->controller('Kodazzi\Site:Welcome:index')->ok();

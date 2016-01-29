@@ -1,0 +1,73 @@
+'Kodazzi\Site:Language':
+  options:
+    table: language
+  fields:
+    id			: {type: primary, strategy: identity}
+    name		: {type: string, length: 50}
+    code		: {type: string, length: 5}
+    by_default	: {type: options, values: {0: 'No', 1: 'Si'}, default: 0}
+
+Category:
+  options:
+    table: categories
+    timestampable: true
+    sluggable: title
+  fields:
+    id					: {type: primary, strategy: identity}
+    title				: {type: title, length: 255, notnull: true}
+
+Group:
+  options:
+    table: groups
+  fields:
+    id                  : {type: primary, strategy: identity}
+    name                : {type: string, length: 255}
+
+'Kodazzi\Site:Telephone':
+  options:
+    table: telephones
+  fields:
+    id                  : {type: primary, strategy: identity}
+    number              : {type: string, length: 255}
+
+Model:
+  options:
+    table: models
+    timestampable: true
+    sluggable: title
+    translatable: 'Kodazzi\Site:Language'
+  fields:
+    id					: {type: primary, strategy: identity}
+    title				: {type: string, length: 255, notnull: true, translation: true}
+    category:
+      type: foreign
+      model: Category
+      join: { name: "category_id", foreignField: "id" }
+      relation: "many-to-one"
+    telephone:
+      type: foreign
+      model: 'Kodazzi\Site:Telephone'
+      join: { name: "telephone_id", foreignField: "id" }
+      relation: "one-to-one"
+    groups:
+      type: table
+      model: Group
+      joinTable:
+        name: "pages_groups"
+        join:		{ name: "model_id", foreignField: "id"}
+        inverseJoin : { name: "group_id", foreignField: "id"}
+      relation: "many-to-many"
+    parent:
+      type: foreign
+      model: Model
+      join: { name: "parent_id", foreignField : "id" }
+      relation: "many-to-one-self-referencing"
+      notnull: yes
+    follower:
+      type: table
+      model: Model
+      joinTable:
+        name: "users_followers"
+        join:		{ name: "user_id", foreignField: "id"}
+        inverseJoin : { name: "follower_id", foreignField: "id"}
+      relation: "many-to-many-self-referencing"
