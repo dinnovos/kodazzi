@@ -9,5 +9,5 @@
  */
 
 return [
-     'Providers\AppProviders'
+    new Kodazzi\Site\HookBundle()
 ];

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-return array(
+return [
 
     'project'			    => 'Proyecto Kodazzi1.0',
 
@@ -23,4 +23,5 @@ return array(
     'theme_admin'           => 'admin',
 
     'local'                 => 'es_ES'
-);
+
+];

@@ -8,14 +8,16 @@
  * file that was distributed with this source code.
  */
 
-use Kodazzi\Kernel;
+namespace Tests;
 
-Class AppKernel extends Kernel
+use Kodazzi\Test\DevelopmentTesting;
+
+class AppTest extends DevelopmentTesting
 {
-    public function start()
+    public function testHome()
     {
-        Service::registerBundles(array(
-            new Kodazzi\Site\HookBundle()
-        ));
+        $response = $this->request('/');
+
+        $this->assertContains('Bienvenidos a Kodazzi', $response->getContent());
     }
 }

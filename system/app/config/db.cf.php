@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-return array(
-	'prod' => array(
-		'default' => array(
+return [
+	'prod' => [
+		'default' => [
             'host' 		=> 'localhost',
             'dbname' 	=> 'ki_kodazzi',
             'user' 		=> 'user_kodazzi',
@@ -18,11 +18,11 @@ return array(
             'driver' 	=> 'pdo_mysql',
             'charset '	=> 'utf8',
             'prefix'    => 'ki_'
-		),
-	),
+        ],
+    ],
 	
-	'dev' => array(
-		'default' => array(
+	'dev' => [
+		'default' => [
 			'host' 		=> 'localhost',
 			'dbname' 	=> 'ki_kodazzi',
 			'user' 		=> 'root',
@@ -30,6 +30,6 @@ return array(
 			'driver' 	=> 'pdo_mysql',
 			'charset '	=> 'utf8',
             'prefix'    => 'ki_'
-		),
-	),
-);
+		],
+	],
+];

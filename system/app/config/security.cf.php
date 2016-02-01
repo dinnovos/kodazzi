@@ -8,14 +8,14 @@
  * file that was distributed with this source code.
  */
 
-return array(
+return [
 
-    'access_control' => array(
-        array(
+    'access_control' => [
+        [
             'pattern'           => '^/admin',
             'role'              => 'ADMIN',
             'login_route'       => 'login',
             'forbidden_route'   => 'forbidden'
-        )
-    )
-);
+        ]
+    ]
+];

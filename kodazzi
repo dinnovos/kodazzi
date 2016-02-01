@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * This file is part of the Kodazzi Framework.
@@ -8,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-require_once '../system/app/defined.php';
+require_once __DIR__.'/system/app/defined.php';
 
-$Kernel = new Kodazzi\Kernel('dev', true);
+$Kernel = new Kodazzi\Kernel('shell', true);
 $response = $Kernel->handle(Service::get('kernel.request'));
 $response->send();
 

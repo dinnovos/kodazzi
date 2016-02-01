@@ -19,12 +19,4 @@ define ('Ki_PUBLIC'		, Ki_ROOT . 'public_html/');
 
 define ('Ki_UPLOAD'		, 'upload/');
 
-if(! defined('Ki_ENVIRONMENT'))
-{
-    // dev or prod
-    define ('Ki_ENVIRONMENT', 'dev');
-}
-
-define ('Ki_DEBUG', true);
-
 require Ki_VND . 'kodazzi/framework/src/bootstrap.php';
