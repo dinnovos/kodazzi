@@ -1,4 +1,4 @@
-Category:
+'Kodazzi\Site:Category':
   options:
     table: categories
     timestampable: true
@@ -7,61 +7,86 @@ Category:
     id					: {type: primary, strategy: identity}
     title				: {type: title, length: 255, notnull: true}
 
-Group:
+'Kodazzi\Site:Telephone':
+  options:
+    table: telephones
+  fields:
+    id                  : {type: primary, strategy: identity}
+    number              : {type: string, length: 255}
+
+'Group':
   options:
     table: groups
   fields:
     id                  : {type: primary, strategy: identity}
     name                : {type: string, length: 255}
-    description         : {type: note, length: 500}
 
-Model:
+'Kodazzi\Site:Language':
   options:
-    table: models
+    table: language
+  fields:
+    id			: {type: primary, strategy: identity}
+    name		: {type: string, length: 50}
+    code		: {type: string, length: 5}
+    by_default	: {type: options, values: {0: 'No', 1: 'Si'}, default: 0}
+
+'Kodazzi\Site:Item':
+  options:
+    table: items
     timestampable: true
     sluggable: title
+    translatable: 'Kodazzi\Site:Language'
   fields:
     id					: {type: primary, strategy: identity}
-    title				: {type: string, length: 255, notnull: true}
+    title				: {type: string, length: 255, notnull: true, translation: true}
     sequence		    : {type: integer, length: 5, notnull: false}
-    first_name			: {type: name, length: 30}
+    name			    : {type: name, length: 30}
     email				: {type: email, length: 50, unique: true}
     login				: {type: login, length: 100, unique: true}
     password			: {type: password, length: 50, unique: true}
     url					: {type: url, length: 50}
-    description		    : {type: editor, notnull: false}
+    description		    : {type: editor, notnull: false, translation: true}
     address			    : {type: note, length: 2000}
     price				: {type: decimal, precision: 10, scale: 2}
     birthday   			: {type: date}
     period			    : {type: datetime}
     hour                : {type: time, notnull: true}
-    type				: {type: options, values: {admin: Admin, normal: Normal}, default: admin, notnull: false}
-    file				: {type: file, length: 50, size: 1000, ext: [jpg]}
+    status				: {type: options, values: {0: 'Inactive', 1: 'Active'}, default: 1, notnull: false}
+    file				: {type: file, length: 50, size: 1000, ext: [doc]}
+    accept_terms		: {type: check, value: '1'}
     avatar:
       type: image
-      length: 50
+      length: 100
       size: 1000
       ext: [png, jpg]
       min_dimensions: [120, 120]
       max_dimensions: [2000, 2000]
       copys:
         - {width: 400, height: 200, method: crop, dir: / }
+    parent:
+      type: foreign
+      model: 'Kodazzi\Site:Item'
+      join: { name: "parent_id", foreignField : "id" }
+      relation: "many-to-one-self-referencing"
+      notnull: yes
     category:
       type: foreign
-      model: Category
+      model: 'Kodazzi\Site:Category'
       join: { name: "category_id", foreignField: "id" }
       relation: "many-to-one"
     groups:
       type: table
-      model: Group
+      model: 'Group'
       joinTable:
-        name: "pages_groups"
-        join:		{ name: "model_id", foreignField: "id"}
+        name: "items_groups"
+        join:		{ name: "item_id", foreignField: "id"}
         inverseJoin : { name: "group_id", foreignField: "id"}
       relation: "many-to-many"
-    parent:
-      type: foreign
-      model: Model
-      join: { name: "parent_id", foreignField : "id" }
-      relation: "many-to-one-self-referencing"
-      nullable: yes
+    follower:
+      type: table
+      model: 'Kodazzi\Site:Item'
+      joinTable:
+        name: "items_followers"
+        join:		{ name: "item_id", foreignField: "id"}
+        inverseJoin : { name: "follower_id", foreignField: "id"}
+      relation: "many-to-many-self-referencing"
