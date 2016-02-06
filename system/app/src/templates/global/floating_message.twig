@@ -1,0 +1,132 @@
+{% spaceless %}
+<style type="text/css">
+    #ds-alert{
+        position: fixed;
+        z-index: 9999;
+        height: 60px;
+        opacity: 0;
+        text-align: center;
+        line-height: 30px;
+        margin: 0 auto;
+    }
+
+    .ds-alert-success{
+        color: #006600;
+        background-color: #F2FAE4;
+        border-bottom: 1px solid #006600;
+    }
+
+    .ds-alert-error{
+        color: #DB1924;
+        background-color: #FFDDDD;
+        border-bottom: 1px solid #DB1924;
+    }
+
+    .ds-alert-information{
+        color: #206BAA;
+        background-color: #E8F5FF;
+        border-bottom: 1px solid #206BAA;
+    }
+
+    .ds-alert-warning{
+        color: #AF791F;
+        background-color: #FFF9E1;
+        border-bottom: 1px solid #AF791F;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        Alert.init();
+    });
+
+    var Alert = {
+        id : 'ds-alert',
+        idBottom: 'alert ds-alert-bottom',
+        classSuccess : 'alert alert-success',
+        classError : 'alert alert-danger',
+        classInformation : 'alert alert-info',
+        classWarning : 'alert alert-warning',
+        delay : 500,
+        duration : 5000,
+        width: 600,
+        position: 'top',
+
+        init : function() {
+
+            percentage = (Alert.width * 100) / $(window).width();
+            left = Math.floor((100 - percentage) / 2);
+
+            style_init = {width: Alert.width, left: left+'%', top: '-70px'};
+
+            if(Alert.position == 'bottom'){
+                style_init = {width: Alert.width, left: left+'%', bottom: '-70px'};
+            }
+
+            $('#' + Alert.id).css(style_init);
+
+            if($('#' + Alert.id).delay(Alert.delay).length) {
+                Alert.animation();
+            }
+        },
+        error : function(message, duration) {
+            Alert.show(message, Alert.classError, duration);
+        },
+        success : function(message, duration) {
+            Alert.show(message, Alert.classSuccess, duration);
+        },
+        information : function(message, duration) {
+            Alert.show(message, Alert.classInformation, duration);
+        },
+        warning : function(message, duration) {
+            Alert.show(message, Alert.classWarning, duration);
+        },
+        show : function(message, css_class, duration) {
+
+            $('#' + Alert.id).remove();
+            var alertDiv = $('<div></div>').attr('id', Alert.id).attr('class', css_class);
+
+            percentage = (Alert.width * 100) / $(window).width();
+            left = Math.floor((100 - percentage) / 2);
+
+            style_init = {width: Alert.width, left: left+'%', top: '-70px'};
+
+            if(Alert.position == 'bottom'){
+                style_init = {width: Alert.width, left: left+'%', bottom: '-70px'};
+            }
+
+            alertDiv.css(style_init);
+
+            $('body').prepend(alertDiv);
+            $('#' + Alert.id).html(message);
+            Alert.animation(duration);
+        },
+        animation : function(duration) {
+            if(duration == undefined)
+                duration = Alert.duration;
+
+            var id = ( Alert.position == 'bottom' ) ? Alert.idBottom : Alert.idTop ;
+
+            style_show = {top:'80px', opacity: 1};
+            style_hide = {top:'-70px', opacity: 0};
+
+            if(Alert.position == 'bottom'){
+                style_show = {bottom:'40px', opacity: 1};
+                style_hide = {bottom:'-70px', opacity: 0};
+            }
+
+            $('#' + Alert.id).animate(style_show, 600);
+
+            window.setTimeout(function() {
+                $('#' + Alert.id).animate(style_hide, 600, null, function(){
+                    $(this).remove();
+                });
+            }, duration);
+        }
+    }
+</script>
+{% endspaceless %}
+
+{% for message in messages %}
+    <div id="ds-alert" class="alert {{ message.type }}">{{ message.msg }}</div>
+{% endfor %}
