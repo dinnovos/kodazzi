@@ -11,6 +11,7 @@ string:
     length: {required: true, type-value: 'integer'}
     notnull: {required: false, type-value: 'boolean'}
     unique: {required: false, type-value: 'boolean'}
+    translation: {required: false, type-value: 'boolean'}
 
 # Doctrine: string
 title:
@@ -30,7 +31,7 @@ name:
 email:
   extend: string
   parameters:
-    unique: {required: true, type-value: 'boolean'}
+    unique: {required: false, type-value: 'boolean'}
 
 # Doctrine: string
 login:
@@ -50,6 +51,7 @@ url:
 editor:
   parameters:
     notnull: {required: false, type-value: 'boolean'}
+    translation: {required: false, type-value: 'boolean'}
 
 # Doctrine: text
 note:
@@ -89,6 +91,15 @@ options:
     length: {allow: false}
     values: {required: true, type-value: 'array'}
     default: {required: true, type-value: 'any'}
+
+# Doctrine: string
+check:
+  extend: string
+  parameters:
+    unique: {allow: false}
+    length: {allow: false}
+    notnull: {allow: false}
+    value: {required: true, type-value: 'string'}
 
 # Doctrine: string
 file:
