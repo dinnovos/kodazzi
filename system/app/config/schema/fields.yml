@@ -3,7 +3,7 @@
 # Doctrine: integer
 primary:
   parameters:
-    strategy: {required: true, type-value: 'string', allow-value: ['auto', 'sequence', 'identity', 'falsene']}
+    autoincrement: {required: false, type-value: 'boolean'}
 
 # Doctrine: string
 string:
@@ -98,7 +98,6 @@ check:
   parameters:
     unique: {allow: false}
     length: {allow: false}
-    notnull: {allow: false}
     value: {required: true, type-value: 'string'}
 
 # Doctrine: string
